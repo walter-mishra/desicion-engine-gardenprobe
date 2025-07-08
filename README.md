@@ -105,8 +105,27 @@ There are several bash scripts that facilitate training RL agents in a similar f
 4) Run the rule-based controller on the benchmark simulation using the following run command from the command line:
 
 ```shell
-python -m greenlight_gym.experiments.benchmark_rule_based ----env_id <GLEnv> --n_years <numberofyeartoeval> --train_or_test <trainortestset> --config_name <nameoftheenvconfig-file> --save 
+python -m greenlight_gym.experiments.benchmark_rule_based ----env_id <GLEnv> --n_years <numberofyeartoeval> --train_or_test <trainortestset> --config_name <nameoftheenvconfig-file> --save
 ```
+
+## Running a constant climate simulation
+
+The script `simulate_constant_conditions.py` executes the simplified
+`GreenLightStatesTest` environment with user-specified temperature,
+humidity, CO₂ level and light intensity. It requires the Cython
+extension to be compiled:
+
+```shell
+python setup.py build_cython_only --inplace
+```
+
+After building the extension you can run
+
+```shell
+python simulate_constant_conditions.py --temperature 20 --humidity 70 --co2 400 --light 200
+```
+
+This prints the crop dry mass development over the simulated season.
 
 ## Post processing data from Weights and Biases
 
